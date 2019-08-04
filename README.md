@@ -27,7 +27,7 @@
  | Header   | Content-Type: application/json      |
  |Example Request | ```json { "nickname": "Bob"}```|
  |Response Status Code | 201: Created a new Player  </br> 400: json body or nickname missing|
- |Response Example | ```json { "id": 1,"nickname": "Bob"}```|
+ |Response Example | { "id": 1,"nickname": "Bob"}|
 
 ### Request Parameters
 |Parameter|Type|Mandatory|Example|Description|
@@ -44,7 +44,7 @@ This endpoint can be used to get a player providing a id.
  | Header   | no header needed      |
  |Request | no body needed, just provide the id in the URL. playerId is a long |
  |Response Status Code | 200: Created a new Player </br> 400: json body or nickname missing|
- |Response Example | ```json { "id": 1,"nickname": "Bob"}```|
+ |Response Example | { "id": 1,"nickname": "Bob"}|
 
  ---
 
@@ -55,9 +55,9 @@ This endpoint can be used to get a player providing a id.
  | -------- |---------------|
  | Verb     | POST      |
  | Header   | Content-Type: application/json      |
- |Example Request | ```json { "nickname": "Bob"}```|
+ |Example Request | { "nickname": "Bob"}|
  |Response Status Code | 200: Updated name  </br> 400: json body or nickname missing </br> 404: player not found|
- |Response Example | ```json { "id": 1,"nickname": "Bob"}```|
+ |Response Example | { "id": 1,"nickname": "Bob"}|
 
 ### Request Parameters
 |Parameter|Type|Mandatory|Example|Description|
@@ -73,9 +73,9 @@ This endpoint can be used to create a new Score. Every Score needs to be related
  | -------- |---------------|
  | Verb     | PUT      |
  | Header   | Content-Type: application/json      |
- |Example Request | ```json { "value": 100, "date": "08.06.2019 15:11", playerId:1 }```|
+ |Example Request | {</br>  "value": 100, </br>  "date": "08.06.2019 15:11", </br> playerId:1 </br> }|
  |Response Status Code | 201: Created new score  </br> 400: json body, value or date missing |
- |Response Example | ```json {"id": 2, "value": 12354, "date": "14-07-2019 19:38", "player": {"id": 1,"nickname": "guest"}}```|
+ |Response Example | {</br> "id": 2,</br>  "value": 12354,</br>  "date": "14-07-2019 19:38",</br>  "player":  {</br>"id": 1,</br> "nickname": "guest"</br> }</br> }|
 
 ### Request Parameters
 |Parameter|Type|Mandatory|Example|Description|
@@ -94,9 +94,9 @@ This endpoint will fetch the highest scores made by all players and return them 
 | -------- |---------------|
 | Verb     | GET      |
 | Header   | No header needed     |
-|Example Request | ```json { "limit": 10 }```|
+|Example Request | { "limit": 10 }|
 |Response Status Code | 200: OK |
-|Response Example | ```json [{"id": 5,"value": 100000,"date": "14-07-2019 19:38","player": {"id": 3,"nickname": "Bob"}}]```|
+|Response Example | [</br> {</br> "id": 5,</br> "value": 100000,</br> "date": "14-07-2019 19:38",</br> "player": {</br> "id": 3,</br> "nickname": "Bob"</br> }</br> }</br> ]|
 
 ### Request Parameters
 |Parameter|Type|Mandatory|Example|Description|
@@ -113,9 +113,9 @@ This endpoint will fetch the highest scores made by a given players and return t
 | -------- |---------------|
 | Verb     | GET      |
 | Header   | No header needed     |
-|Example Request | ```json { "limit": 10 }```|
+|Example Request |{ "limit": 10 }|
 |Response Status Code | 200: OK  404: no player found |
-|Response Example | ```json [{"id": 5,"value": 100000,"date": "14-07-2019 19:38","player": {"id": 3,"nickname": "Bob"}}]```|
+|Response Example | [</br> {</br> "id": 5,</br> "value": 100000,</br> "date": "14-07-2019 19:38",</br> "player": {</br> "id": 3,</br> "nickname": "Bob"</br> }</br> }</br> ]|
 
 ### Request Parameters
 |Parameter|Type|Mandatory|Example|Description|
