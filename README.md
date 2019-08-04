@@ -68,13 +68,14 @@ This endpoint can be used to get a player providing a id.
 
 ## Create a new Score
 This endpoint can be used to create a new Score. Every Score needs to be related to a player. Scores can be in the range of int values. If no playerId is provided in the request the backend will create a new player with the nickname guest and return the id. Through this id the player could later still change his nickname and keep all scores made as guest.
+If a playerId is provided, but there is no corresponding player in the database it will return a 404.
 
   | Url      | /score/{playerId}               |
  | -------- |---------------|
  | Verb     | PUT      |
  | Header   | Content-Type: application/json      |
  |Example Request | {</br>  "value": 100, </br>  "date": "08.06.2019 15:11", </br> playerId:1 </br> }|
- |Response Status Code | 201: Created new score  </br> 400: json body, value or date missing |
+ |Response Status Code | 201: Created new score  </br> 400: json body, value or date missing </br> 404: player not found|
  |Response Example | {</br> "id": 2,</br>  "value": 12354,</br>  "date": "14-07-2019 19:38",</br>  "player":  {</br>"id": 1,</br> "nickname": "guest"</br> }</br> }|
 
 ### Request Parameters
@@ -89,6 +90,7 @@ This endpoint can be used to create a new Score. Every Score needs to be related
 ## Get global Highscore List
 
 This endpoint will fetch the highest scores made by all players and return them in an array ordered in descending order starting by the highest score.
+
 
 | Url      | /score               |
 | -------- |---------------|
@@ -105,7 +107,7 @@ This endpoint will fetch the highest scores made by all players and return them 
 
 ---
 
-## Get global Highscore List
+## Get Highscore List for a specific player
 
 This endpoint will fetch the highest scores made by a given players and return them in an array ordered in descending order starting by the highest score.
 

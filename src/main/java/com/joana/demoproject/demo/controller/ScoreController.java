@@ -62,6 +62,12 @@ public class ScoreController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Score> putScore(
             @RequestBody(required = true) @Valid ScoreCreationRequest scoreCreationRequest) {
+        if(scoreCreationRequest.getPlayerId() != null) {
+            Optional<Player> optinalPlayer = this.playerService.findById(scoreCreationRequest.getPlayerId());
+            if (optinalPlayer.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        }
         Score score = this.scoreService.saveFromRequest(scoreCreationRequest);
         return new ResponseEntity<>(score, HttpStatus.CREATED);
     }
