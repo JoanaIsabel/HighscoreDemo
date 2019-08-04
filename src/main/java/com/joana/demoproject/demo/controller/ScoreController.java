@@ -48,6 +48,10 @@ public class ScoreController {
     public ResponseEntity<List<Score>> getScoresforPlayer(
             @PathVariable Long playerId,
             @RequestBody GetScoresRequest getScoresRequest) {
+        Optional<Player> optinalPlayer = this.playerService.findById(playerId);
+        if (optinalPlayer.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         List<Score> scores = this.scoreService.findTopScoresForPlayerLimitedBy(getScoresRequest.getLimit(), playerId);
         return new ResponseEntity<>(scores, HttpStatus.OK);
     }
@@ -58,13 +62,6 @@ public class ScoreController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Score> putScore(
             @RequestBody(required = true) @Valid ScoreCreationRequest scoreCreationRequest) {
-        if (scoreCreationRequest.getPlayerId() != null) {
-            Optional<Player> optinalPlayer = this.playerService.findById(scoreCreationRequest.getPlayerId());
-            if (optinalPlayer.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        }
-
         Score score = this.scoreService.saveFromRequest(scoreCreationRequest);
         return new ResponseEntity<>(score, HttpStatus.CREATED);
     }
