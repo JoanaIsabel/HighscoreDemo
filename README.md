@@ -116,7 +116,7 @@ This endpoint will fetch the highest scores made by a given players and return t
 | Verb     | GET      |
 | Header   | No header needed     |
 |Example Request |{ "limit": 10 }|
-|Response Status Code | 200: OK  404: no player found |
+|Response Status Code | 200: OK  </br> 404: no player found |
 |Response Example | [</br> {</br> "id": 5,</br> "value": 100000,</br> "date": "14-07-2019 19:38",</br> "player": {</br> "id": 3,</br> "nickname": "Bob"</br> }</br> }</br> ]|
 
 ### Request Parameters

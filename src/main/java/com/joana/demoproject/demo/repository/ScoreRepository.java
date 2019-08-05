@@ -22,11 +22,6 @@ public class ScoreRepository {
         entityManager.flush();
     }
 
-    public List<Score> findAllByPlayerId (Long playerId) {
-        return entityManager.createQuery("SELECT s FROM Score s WHERE s.player = :playerId")
-                        .setParameter("playerId",playerId)
-                        .getResultList();
-    }
 
     public List<Score> findTopScores (@Param("limit")Integer limit) {
         Query query = entityManager.createQuery("SELECT s FROM Score s ORDER BY value DESC");
