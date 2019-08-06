@@ -1,5 +1,5 @@
 # HighscoreDemo
- A small backend application to handle Highscore Lists. I wrote this to introduce myself to Java Spring/Hibernate and the backend of Rest APIs
+ A small backend application to handle Highscore Lists. I wrote this to introduce myself to Java Spring/Hibernate and Rest APIs from a backend point of view.
 
  
 ---
@@ -25,7 +25,7 @@
  | -------- |---------------|
  | Verb     | PUT      |
  | Header   | Content-Type: application/json      |
- |Example Request | ```json { "nickname": "Bob"}```|
+ |Example Request | { "nickname": "Bob"}|
  |Response Status Code | 201: Created a new Player  </br> 400: json body or nickname missing|
  |Response Example | { "id": 1,"nickname": "Bob"}|
 
@@ -37,12 +37,12 @@
 ---
 
 ## Get a player
-This endpoint can be used to get a player providing a id.
+This endpoint can be used to get a player when providing an id.
 | Url      | /player/{playerId}               |
 | -------- |---------------|
 | Verb     | GET      |
  | Header   | no header needed      |
- |Request | no body needed, just provide the id in the URL. playerId is a long |
+ |Request | no body needed, just provide the id in the URL. playerId is from type long |
  |Response Status Code | 200: Created a new Player </br> 400: json body or nickname missing|
  |Response Example | { "id": 1,"nickname": "Bob"}|
 
@@ -67,7 +67,7 @@ This endpoint can be used to get a player providing a id.
 ---
 
 ## Create a new Score
-This endpoint can be used to create a new Score. Every Score needs to be related to a player. Scores can be in the range of int values. If no playerId is provided in the request the backend will create a new player with the nickname guest and return the id. Through this id the player could later still change his nickname and keep all scores made as guest.
+This endpoint can be used to create a new Score. Every Score needs to be related to a player. Scores can be in the range of int values. If no playerId is provided in the request the backend will create a new player with the nickname "guest" and return the id. Through this id the player could later still change his nickname and keep all scores made as guest.
 If a playerId is provided, but there is no corresponding player in the database it will return a 404.
 
   | Url      | /score/{playerId}               |
@@ -89,7 +89,7 @@ If a playerId is provided, but there is no corresponding player in the database 
 
 ## Get global Highscore List
 
-This endpoint will fetch the highest scores made by all players and return them in an array ordered in descending order starting by the highest score.
+This endpoint will fetch the highest scores made by all players and return them in an array ordered in descending order starting by the highest score. You can provide a limit for only delivering the top x scores.
 
 
 | Url      | /score               |
@@ -109,7 +109,7 @@ This endpoint will fetch the highest scores made by all players and return them 
 
 ## Get Highscore List for a specific player
 
-This endpoint will fetch the highest scores made by a given players and return them in an array ordered in descending order starting by the highest score.
+This endpoint will fetch the highest scores made by a given player and return them in an array ordered in descending order starting by the highest score. You can provide a limit for only delivering the top x scores.
 
 | Url      | /score/{playerId}               |
 | -------- |---------------|
